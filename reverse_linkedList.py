@@ -61,7 +61,7 @@ class Solution:
 
 if __name__ == "__main__":
     sol = Solution()
-    sol.inserNode([1,2,3,4,5])
+    sol.inserNode([1,2])
 
     sol.showlist()
     sol.reverseList()
