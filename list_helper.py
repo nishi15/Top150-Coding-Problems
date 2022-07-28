@@ -18,8 +18,8 @@ class LinkedListHelper:
             node1 = node1.next
         return self.head
 
-    def showlist(self):
-        node = self.head
+    def showlist(self,head):
+        node = head
         while node:
             print(node.val,end=" -> ")
             node = node.next

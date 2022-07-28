@@ -47,5 +47,5 @@ class Solution:
 
 
 sol = Solution()
-sol.productExceptSelf([1])
+sol.productExceptSelf([1,2,3,4])
         
