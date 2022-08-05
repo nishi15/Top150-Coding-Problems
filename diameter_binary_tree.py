@@ -25,9 +25,7 @@ The number of nodes in the tree is in the range [1, 104].
 -100 <= Node.val <= 100
 
 '''
-from unittest import result
-import tree_helper as tree_helper
-
+import tree_helper
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -35,19 +33,22 @@ import tree_helper as tree_helper
 #         self.left = left
 #         self.right = right
 class Solution:
-    def diameterOfBinaryTree(self, root: 'Optional[TreeNode]') -> int:
-        result = 0 
-        result = self.traversal(root,result)
-        return result
+    def diameterOfBinaryTree(self, root) -> int:
+        maxsum = [0]        
     
-    def traversal(self,node,result):
-        if not node:
-            return result
+        def helper(root):
+            if not root:
+                return 0
 
-        left = self.traversal(node.left,result)
-        right = self.traversal(node.right,result)
-        result = max(left+right,result)
-        return result
+            left = helper(root.left) 
+            right = helper(root.right)
+            
+            maxsum[0] = max(maxsum[0],left+right)
+            return 1 + max(left,right)
+
+        
+        helper(root)
+        return maxsum[0]
 
 
 if __name__ == "__main__":
@@ -56,4 +57,4 @@ if __name__ == "__main__":
     tree.insert_node([1,2,3,4,5])
     root = tree.show_tree()
     res = sol.diameterOfBinaryTree(root)
-    print(res)
+    print("Diameter",res)
