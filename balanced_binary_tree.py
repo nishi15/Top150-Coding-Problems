@@ -59,7 +59,6 @@ class Solution:
         
 
 
-
 if __name__ == "__main__":
     root = tree_helper.Tree()
     root.insert_node([3,2,20,18,17])
