@@ -38,28 +38,30 @@ from list_helper import LinkedListHelper
 class Solution:
     def removeNthFromEnd(self, head, n: int):
         
-        if head.next == None:
-            return None
-
-        temp =  head
-        temp2 =  head
-        len_count = 0 
-
+        temp = temp2 = head
+        size = 0
+        
         while temp:
-            len_count+=1
+            size +=1
             temp = temp.next
             
-        last_node = len_count - n -1
-
-        while last_node:
-            temp2 = temp2.next
-            last_node -=1
+        d = size-n-1
         
+        if size == n:
+            return head.next
+        
+        while d > 0:
+            print("d",d)
+            temp2 = temp2.next
+            d -=1
+                
         t = temp2.next
-        temp2.next = t.next
 
-        head = temp2
-
+        if t.next:
+            temp2.next = t.next
+        else:
+            temp2.next = None
+            
         return head
 
 if __name__ == "__main__":
