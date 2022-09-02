@@ -45,29 +45,41 @@ nums is an ascending array that is possibly rotated.
 
 class Solution:
     def search(self, nums, target: int) -> int:
-        if len(nums) < 2 and target == nums[0]:
-            return 0
         
         l = 0
         r = len(nums) -1
         
-        while l < r:
+        while l <= r:
             mid = (l+r) //2
-            print(mid)          
-            if target < nums[l]:
-                l = mid+1
-                continue
-            elif target > nums[r]:
-                r = mid -1
-                print("r",r)
-                continue
+            print(mid)            
+            if target == nums[mid]:
+                return mid                     
+            
+            # search in left sorted array
+            if nums[l] <= nums[mid]:
+
+                #if the target in either greater than mid or target is less then left pointer 
+                # we will move to right part of the arry
+                # else -> stay at left part and search again
+                if target > nums[mid] or target < nums[l]:
+                    l = mid+1
+                else:
+                    r = mid -1
+
+            # searching in the right sorted array
             else:
-                print(nums[mid])
-                return mid
-        
+
+                # if target is less than mid ele or target is greater than right pointer 
+                # we will move to left part of array
+                # else -> stay at right part
+                if target < nums[mid] or target > nums[r]:
+                    r = mid -1
+                else:
+                    l = mid +1
+
         return -1
         
         
 if __name__ == "__main__":
     sol = Solution()
-    sol.search([4,5,6,7,0,1,2],0)
+    print("-->",sol.search([4,5,6,7,8,1,2,3],8))
