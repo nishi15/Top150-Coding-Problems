@@ -35,9 +35,26 @@ class Solution:
     
         return dp[n][sum]
         
+    def subset_recursion(self,N,arr,sum,res):
+        if sum ==0:
+            # res.append(arr[N])
+            return True
+
+        if not N:
+            return False       
+        
+        if arr[N-1] <= sum:
+            left =  self.subset_recursion(N-1,arr,sum - arr[N-1],res)        
+            right =  self.subset_recursion(N-1,arr,sum,res)
+            return left or right    
+        else:
+            return self.subset_recursion(N-1,arr,sum,res)  
+
+        
 
 
 if __name__ == "__main__":
     sol = Solution()
     arr = [2,3,7,8,10]
-    print(sol.subset(arr,6))
+    # print(sol.subset(arr,6))
+    print(sol.subset_recursion(len(arr),arr,9,[]))
