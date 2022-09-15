@@ -45,7 +45,7 @@ def timingSum(a, n)-> int:
     print(f'count is {count}')
     print(freq)
 
-# timingSum([ 30, 20, 30,40, 100 ],5)
+timingSum([ 30, 20, 30,40, 100 ],5)
 
 l = [30, 20, 30,40, 100]
 c = 0

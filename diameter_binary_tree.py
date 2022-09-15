@@ -43,8 +43,8 @@ class Solution:
             left = helper(root.left) 
             right = helper(root.right)
             
-            maxsum[0] = max(maxsum[0],left+right)
-            return 1 + max(left,right)
+            maxsum[0] = max(maxsum[0],left+right) # diameter
+            return 1 + max(left,right) # hright
 
         
         helper(root)
